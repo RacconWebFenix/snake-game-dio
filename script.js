@@ -8,6 +8,10 @@ snake[0] = { //posição onde sera criado a cobra
 }
 
 let direction = "right";
+let food = {
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y:  Math.floor(Math.random() * 15 + 1) * box
+}
 
 function criarBG() { //cria o fundo
     context.fillStyle = "lightgreen";
@@ -20,6 +24,11 @@ function criarSnake(){ //cria a cobra
         context.fillRect(snake[i].x, snake[i].y, box, box)
     }
 
+}
+
+function drawFood(){
+    context.fillStyle = "red";
+    context.fillRect(food.x, food.y, box, box) 
 }
 
 document.addEventListener('keydown', update);
@@ -41,6 +50,7 @@ function iniciarJogo(){
     
     criarBG();
     criarSnake();
+    drawFood();
 
     let snakeX = snake[0].x;
     let snakeY = snake[0].y;
